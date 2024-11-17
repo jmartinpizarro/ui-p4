@@ -16,6 +16,9 @@ export default {
         darkgrey: "#5B5B5B",
         background: "#F5F3F4"
       },
+      fontFamily: {
+        lora: ['Lora', 'serif']
+      }
     },
   },
   plugins: [],

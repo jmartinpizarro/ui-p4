@@ -7,9 +7,6 @@ import Paragraph from "@/components/Paragraph";
 
 export default function Home() {
   return (
-    <>
     <Header text="Holaaa" color="red"></Header>
-    <Paragraph text="Lorem ipsum alaklskldksdl sdlkdlsmdl skskjnksklfnsklf klsnflnl"></Paragraph>
-    </>
   );
 }

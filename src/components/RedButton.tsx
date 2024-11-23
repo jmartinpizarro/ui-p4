@@ -12,7 +12,7 @@ const RedButton: React.FC<RedButtonProps> = ({ text, clicked }) => {
     }
   };
 
-  return <button className="bg-red px-5 py-1 rounded-xl text-base" onClick={handleClick}>{text}</button>;
+  return <button className="bg-red px-5 py-1 rounded-xl text-background" onClick={handleClick}>{text}</button>;
 };
 
 export default RedButton;

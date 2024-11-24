@@ -58,3 +58,33 @@ export function gatherChildrenData() {
 
     return children;
 }
+
+export function errorPopUp(message: string, error: boolean) {
+    const popup = document.createElement("div");
+
+    popup.className = "error-popup";
+
+    popup.innerHTML = `<p>${message}</p>`;
+
+    popup.style.position = "fixed";
+    popup.style.top = "20px";
+    popup.style.left = "50%";
+    popup.style.transform = "translateX(-50%)";
+    popup.style.padding = "15px";
+    if (error) {
+        popup.style.backgroundColor = "red";
+        popup.style.color = "white";
+    }
+    popup.style.backgroundColor = "white";
+    popup.style.color = "green";
+    popup.style.fontSize = "16px";
+    popup.style.borderRadius = "5px";
+    popup.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+    popup.style.zIndex = "1000";
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.remove();
+    }, 3000);
+}

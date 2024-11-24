@@ -19,6 +19,9 @@ export default {
       fontFamily: {
         lora: ['Lora', 'serif']
       },
+      width: {
+        'standard': '1156px'
+      },
       height: {
         '80vh': '80vh',
         '90vh': '90vh'

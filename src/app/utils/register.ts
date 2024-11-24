@@ -109,9 +109,10 @@ export function registerPopUp() {
                 } else {
                     console.error("El formulario no se encontró o no es un elemento HTMLFormElement.");
                 }
+                closePopUp(buttonClicked)
 
             } else if ((buttonClicked as HTMLButtonElement).name === "negate") {
-                if (event.target instanceof HTMLButtonElement) {
+                if (event.target instanceof HTMLElement) {
                     closePopUp(event.target);
                 } else {
                     console.error("El target no es un elemento HTMLButtonElement.");
@@ -153,7 +154,7 @@ export function registerPopUp() {
             }
             if ((buttonClicked as HTMLButtonElement).name === "confirm") {
                 closePopUp(popup)
-                if (event.target instanceof HTMLButtonElement) {
+                if (event.target instanceof HTMLElement) {
                     closePopUp(event.target);
                 } else {
                     console.error("El target no es un elemento HTMLButtonElement.");

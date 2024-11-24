@@ -12,7 +12,7 @@ interface WhiteButtonProps {
       }
     };
   
-    return <button className="text-red px-5 py-1 rounded-xl text-base bg-background" onClick={handleClick}>{text}</button>;
+    return <button className="text-red px-5 py-1 rounded-xl text-base bg-background  hover:bg-red hover:text-background transition ease-in duration-200" onClick={handleClick}>{text}</button>;
   };
   
   export default WhiteButton;

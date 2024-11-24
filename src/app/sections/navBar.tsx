@@ -39,14 +39,14 @@ const NavBar: React.FC = () => {
 
             {/* Mobile Menu */}
             <div
-                className={`fixed top-0 right-0 h-full w-3/4 bg-palered shadow-lg transform ${isOpen ? "translate-x-0" : "translate-x-full"
+                className={`fixed top-0 py-12 right-0 h-full w-3/4 bg-palered shadow-lg transform ${isOpen ? "translate-x-0" : "translate-x-full"
                     } transition-transform duration-300 ease-in-out lg:hidden`}
             >
                 <button
-                    className="absolute top-5 right-5"
+                    className="absolute top-8 right-8"
                     onClick={() => setIsOpen(false)}
                 >
-                    <Image route="/cross.png" width="16" height="16" alternativeDesc="Close menu" />
+                    <Image route="/cross.png" width="12" height="12" alternativeDesc="Close menu" />
                 </button>
                 <ul className="flex flex-col items-start gap-5 p-10">
 

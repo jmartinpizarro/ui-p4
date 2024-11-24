@@ -1,6 +1,7 @@
 import Image from "../../components/Image"
 import RedButton from "@/components/RedButton"
 import WhiteButton from "@/components/WhiteButton"
+import { registerPopUp } from "../utils/register"
 
 import { useState } from "react"
 
@@ -34,7 +35,7 @@ const NavBar: React.FC = () => {
                 <a className="text-background hover:underline" href="#activities">Experiencias navideñas</a>
 
                 <WhiteButton text="Iniciar sesión" clicked={() => console.log('login')}></WhiteButton>
-                <RedButton text="Registrarse" clicked={() => console.log('register')}></RedButton>
+                <RedButton text="Registrarse" clicked={registerPopUp}></RedButton>
             </div>
 
             {/* Mobile Menu */}

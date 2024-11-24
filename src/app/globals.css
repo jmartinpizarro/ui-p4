@@ -5,6 +5,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --black: #0B090A;
+  --red: #BA181B;
+  --palered: #E5383B;
+  --grey: #D3D3D3;
+  --darkgrey: #5B5B5B;
+  --background: #F5F3F4;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,4 +24,92 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.register-popup {
+  background-color: var(--grey);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  padding: 1rem;
+  max-width: 90%;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.popUp-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1.5rem 2rem;
+  background-color: var(--grey);
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.popUp-form input,
+.popUp-form select {
+  width: 100%;
+  border: 1px solid var(--dark-grey);
+  border-radius: 5px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.register-popup h2 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.popUp-form input:focus,
+.popUp-form select:focus {
+  border-color: var(--pale-red);
+  outline: none;
+}
+
+.popUp-form h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: var(--dark-grey);
+}
+
+.popUp-form label {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--dark-grey);
+}
+
+/* Estilos responsivos */
+@media screen and (max-width: 768px) {
+  .popUp-form {
+      padding: 1rem;
+  }
+
+  .popUp-form h2 {
+      font-size: 1.25rem;
+  }
+
+  .popUp-form input,
+  .popUp-form select {
+      padding: 0.5rem;
+      font-size: 0.9rem;
+  }
+
+  .popUp-form button {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+  }
 }

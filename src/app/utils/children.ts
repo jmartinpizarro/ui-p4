@@ -88,3 +88,42 @@ export function errorPopUp(message: string, error: boolean) {
         popup.remove();
     }, 3000);
 }
+
+interface Child {
+    name: string;
+    age: number;
+    favoriteToys: string;
+}
+
+interface User {
+    username: string;
+    password: string;
+    email: string;
+    city: string;
+    country: string;
+    children: Child[];
+}
+
+export function checkLogIn(user: string, password: string): boolean {
+    // Recuperar usuarios desde localStorage
+    const storedUsers = localStorage.getItem("users");
+    let users: User[] = [];
+
+    if (storedUsers) {
+        try {
+            users = JSON.parse(storedUsers);
+        } catch (error) {
+            console.error("Error al parsear los usuarios desde localStorage", error);
+        }
+    }
+
+    // Verificar si algún usuario coincide con las credenciales
+    for (const localItem of users) {
+        if (localItem.username === user && localItem.password === password) {
+            localStorage.setItem('userLogged', user);
+            return true;
+        }
+    }
+
+    return false;
+}

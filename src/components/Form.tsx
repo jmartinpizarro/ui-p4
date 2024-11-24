@@ -21,7 +21,7 @@ const Form: React.FC<FormProps> = ({title, buttonText, inputs}) => {
                             id={input}
                             type="text"
                             placeholder={`Ingrese ${input}`}
-                            className="w-full border indent-4 py-2 border-darkgrey rounded-2xl"
+                            className="w-full border py-2 px-5 border-darkgrey rounded-2xl"
                         />
                     </div>
                 ))}

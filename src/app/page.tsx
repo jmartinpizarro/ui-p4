@@ -3,6 +3,7 @@
 import NavBar from "./sections/navBar";
 import Intro from "./sections/intro";
 import Map from "./sections/map";
+import SendLetter from "./sections/sendLetters";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <NavBar />
       <Intro />
       <Map />
+      <SendLetter />
     </>
 
   );

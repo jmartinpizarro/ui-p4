@@ -5,10 +5,10 @@ import RedButton from "@/components/RedButton"
 
 const Intro: React.FC = () => {
     return (
-        <section className="px-4 py-10 flex flex-col items-center justify-center gap-6">
+        <section className="px-4 py-10 flex flex-col items-center justify-center gap-10 min-h-[90vh]">
             <Header text="¡Conoce a Papá Noel!" color="red"></Header>
 
-            <article className="flex flex-col lg:flex-row items-center justify-between gap-10 w-full max-w-7xl mx-auto">
+            <article className="flex flex-col lg:flex-row items-center justify-between gap-10 w-full max-w-7xl mx-auto my-5">
                 <div className="flex flex-col gap-5 lg:w-1/2 text-center lg:text-left">
                     <Paragraph text="Papá Noel, inspirado en San Nicolás de Bari, comenzó como un obispo generoso del siglo IV, famoso por regalar a los niños en secreto. Con el tiempo, esta figura evolucionó en Europa y, al llegar a Estados Unidos como 'Sinterklaas', se transformó en 'Santa Claus'. Durante el siglo XIX, su imagen se consolidó como un anciano de barba blanca y traje rojo, gracias a la influencia de poemas y anuncios."></Paragraph>
 

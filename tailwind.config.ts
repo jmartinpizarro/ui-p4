@@ -18,6 +18,10 @@ export default {
       },
       fontFamily: {
         lora: ['Lora', 'serif']
+      },
+      height: {
+        '80vh': '80vh',
+        '90vh': '90vh'
       }
     },
   },

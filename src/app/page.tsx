@@ -5,6 +5,7 @@ import Intro from "./sections/intro";
 import Map from "./sections/map";
 import SendLetter from "./sections/sendLetters";
 import Activities from "./sections/activities";
+import Footer from "./sections/footer";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Map />
       <SendLetter />
       <Activities />
+      <Footer />
     </>
 
   );

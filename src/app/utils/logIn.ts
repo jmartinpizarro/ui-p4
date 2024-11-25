@@ -57,12 +57,24 @@ export function logInPopUp() {
         if (checkLogIn(user, password)) {
             const isKid = (form as HTMLFormElement).ageGroup.value;
             localStorage.setItem('isKid', isKid)
-            const toRemove = document.querySelector('.autenticator');
-            const toDisplay = document.querySelector('.isLogin');
+            const toRemove = document.querySelectorAll('.autenticator');
+            const toDisplay = document.querySelectorAll('.isLogin');
             popup.remove();
-            (toRemove as HTMLElement).style.display = 'none'; // authenticator se cambia por versión logueada
-            (toDisplay as HTMLElement).style.display = 'flex';
-            (toDisplay as HTMLElement).style.gap = '0.75rem';
+            toRemove.forEach((element) => {
+                if (element instanceof HTMLElement) {
+                    element.style.display = 'none';
+                } else {
+                    console.error('Element is not an HTMLElement:', element);
+                }
+            });
+            
+            toDisplay.forEach((element) => {
+                if (element instanceof HTMLElement) {
+                    element.style.display = 'flex';
+                } else {
+                    console.error('Element is not an HTMLElement:', element);
+                }
+            });
         } else {
             alert('Usuario/contraseña incorrecta')
         }

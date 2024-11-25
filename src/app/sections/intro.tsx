@@ -3,6 +3,8 @@ import Paragraph from "@/components/Paragraph"
 import Image from "@/components/Image"
 import RedButton from "@/components/RedButton"
 
+import { registerPopUp } from "../utils/register"
+
 const Intro: React.FC = () => {
     return (
         <section className="px-4 py-10 flex flex-col items-center justify-center gap-10 min-h-[90vh]">
@@ -16,7 +18,7 @@ const Intro: React.FC = () => {
 
                     <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                         <RedButton text="¡A la galería!" clicked={'/galeria'}></RedButton>
-                        <RedButton text="Regístrarte" clicked={() => { console.log('register') }}></RedButton>
+                        <RedButton text="Regístrarte" clicked={registerPopUp}></RedButton>
                     </div>
                 </div>
 

@@ -1,11 +1,12 @@
 import Image from "../../components/Image"
 import RedButton from "@/components/RedButton"
 import WhiteButton from "@/components/WhiteButton"
+import { registerPopUp } from "../utils/register"
+import { logInPopUp } from "../utils/logIn"
 
 import { useState } from "react"
 
 const NavBar: React.FC = () => {
-
     const [isOpen, setIsOpen] = useState(false)
 
     return (
@@ -33,8 +34,16 @@ const NavBar: React.FC = () => {
                 <a className="text-background hover:underline" href="#sendLetters">¡Envía tu carta!</a>
                 <a className="text-background hover:underline" href="#activities">Experiencias navideñas</a>
 
-                <WhiteButton text="Iniciar sesión" clicked={() => console.log('login')}></WhiteButton>
-                <RedButton text="Registrarse" clicked={() => console.log('register')}></RedButton>
+                {/* Autenticación para Desktop */}
+                <div className="autenticator flex flex-row gap-5">
+                    <WhiteButton text="Iniciar sesión" clicked={logInPopUp}></WhiteButton>
+                    <RedButton text="Registrarse" clicked={registerPopUp}></RedButton>
+                </div>
+
+                {/* Contenido para usuarios logueados (Desktop) */}
+                <div className="isLogin hidden">
+                    <WhiteButton text="👤" clicked={() => console.log('popUp to create')}></WhiteButton>
+                </div>
             </div>
 
             {/* Mobile Menu */}
@@ -65,10 +74,17 @@ const NavBar: React.FC = () => {
                     <a className="text-background hover:underline" href="#activities" onClick={() => setIsOpen(false)}>
                         Experiencias navideñas
                     </a>
-                    <WhiteButton text="Iniciar sesión" clicked={() => { console.log('login'); setIsOpen(false); }}></WhiteButton>
 
-                    <RedButton text="Registrarse" clicked={() => { console.log('register'); setIsOpen(false); }}></RedButton>
+                    {/* Autenticación para Mobile */}
+                    <div className="autenticator flex flex-row gap-5">
+                        <WhiteButton text="Iniciar sesión" clicked={logInPopUp}></WhiteButton>
+                        <RedButton text="Registrarse" clicked={registerPopUp}></RedButton>
+                    </div>
 
+                    {/* Contenido para usuarios logueados (Mobile) */}
+                    <div className="isLogin hidden">
+                        <WhiteButton text="👤" clicked={() => console.log('popUp to create')}></WhiteButton>
+                    </div>
                 </ul>
             </div>
         </nav>

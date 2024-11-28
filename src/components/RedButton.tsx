@@ -1,18 +1,26 @@
 interface RedButtonProps {
   text: string;
-  clicked: (() => void) | string; // clicked puede ser una función o una ruta (string)
+  clicked: (() => void) | string;
+  className?: string; // Nueva propiedad para clases adicionales
 }
 
-const RedButton: React.FC<RedButtonProps> = ({ text, clicked }) => {
+const RedButton: React.FC<RedButtonProps> = ({ text, clicked, className }) => {
   const handleClick = () => {
-    if (typeof clicked === 'function') {
-      clicked(); // Si es una función, la ejecuta
-    } else if (typeof clicked === 'string') {
-      window.location.href = clicked; // Si es un string, redirige a la ruta
-    }
+      if (typeof clicked === 'function') {
+          clicked();
+      } else if (typeof clicked === 'string') {
+          window.location.href = clicked;
+      }
   };
 
-  return <button className="bg-red px-5 py-1 rounded-xl text-background hover:bg-background hover:text-red transition ease-in duration-200" onClick={handleClick}>{text}</button>;
+  return (
+      <button
+          className={`bg-red px-5 py-1 rounded-xl text-background hover:bg-background hover:text-red transition ease-in duration-200 ${className}`}
+          onClick={handleClick}
+      >
+          {text}
+      </button>
+  );
 };
 
 export default RedButton;

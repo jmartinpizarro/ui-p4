@@ -17,8 +17,10 @@ const Intro: React.FC = () => {
                     <Paragraph text="Hoy, Santa Claus es un ícono navideño global, repartiendo regalos en su trineo desde el Polo Norte, ayudado por elfos, y simbolizando la alegría y generosidad infantil."></Paragraph>
 
                     <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                        <RedButton text="¡A la galería!" clicked={'/galeria'}></RedButton>
+                        <RedButton text="¡A la galería!" clicked={'/gallery'}></RedButton>
                         <RedButton text="Regístrarte" clicked={registerPopUp}></RedButton>
+                        <RedButton text="Catálogo de Juguetes" clicked={'/toycatalogueadult'}></RedButton>
+                        <RedButton text="Test del Niño Bueno" clicked={'/test'}></RedButton>
                     </div>
                 </div>
 

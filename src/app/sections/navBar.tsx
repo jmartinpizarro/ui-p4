@@ -1,6 +1,7 @@
 import Image from "../../components/Image"
 import RedButton from "@/components/RedButton"
 import WhiteButton from "@/components/WhiteButton"
+import PopUp from "@/components/Enrouter"
 import { registerPopUp } from "../utils/register"
 import { logInPopUp } from "../utils/logIn"
 
@@ -8,6 +9,7 @@ import { useState } from "react"
 
 const NavBar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false)
+    const [isPopUpVisible, setIsPopUpVisible] = useState(false)
 
     return (
         <nav className="flex justify-between items-center h-24 w-full bg-palered px-10 relative">
@@ -42,7 +44,7 @@ const NavBar: React.FC = () => {
 
                 {/* Contenido para usuarios logueados (Desktop) */}
                 <div className="isLogin hidden">
-                    <WhiteButton text="👤" clicked={() => console.log('popUp to create')}></WhiteButton>
+                    <WhiteButton text="👤" clicked={() => setIsPopUpVisible(true)}></WhiteButton>
                 </div>
             </div>
 
@@ -83,10 +85,15 @@ const NavBar: React.FC = () => {
 
                     {/* Contenido para usuarios logueados (Mobile) */}
                     <div className="isLogin hidden">
-                        <WhiteButton text="👤" clicked={() => console.log('popUp to create')}></WhiteButton>
+                        <WhiteButton text="👤" clicked={() => setIsPopUpVisible(true)}></WhiteButton>
                     </div>
                 </ul>
             </div>
+
+            <PopUp
+                isVisible={isPopUpVisible}
+                onClose={() => setIsPopUpVisible(false)}
+            />
         </nav>
     )
 }

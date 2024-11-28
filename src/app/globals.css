@@ -58,6 +58,8 @@ body {
 
 .popUp-form input,
 .popUp-form select {
+  background-color: var(--pale-white);
+  color: var(--dark-grey);
   width: 100%;
   border: 1px solid var(--dark-grey);
   border-radius: 5px;

@@ -160,7 +160,7 @@ export function registerPopUp() {
                     console.error("El target no es un elemento HTMLButtonElement.");
                 }
             } else if ((buttonClicked as HTMLButtonElement).name === "negate") {
-                if (event.target instanceof HTMLButtonElement) {
+                if (event.target instanceof HTMLElement) {
                     closePopUp(event.target);
                 } else {
                     console.error("El target no es un elemento HTMLButtonElement.");

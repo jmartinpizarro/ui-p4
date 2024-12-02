@@ -21,6 +21,7 @@ const Intro: React.FC = () => {
                         <RedButton text="Regístrarte" clicked={registerPopUp}></RedButton>
                         <RedButton text="Catálogo de Juguetes" clicked={'/toycatalogueadult'}></RedButton>
                         <RedButton text="Test del Niño Bueno" clicked={'/test'}></RedButton>
+                        <RedButton text="Reserva tu viaje" clicked={'/trip'}></RedButton>
                     </div>
                 </div>
 

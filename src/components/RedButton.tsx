@@ -1,10 +1,11 @@
 interface RedButtonProps {
   text: string;
-  clicked: (() => void) | string;
+  clicked?: (() => void) | string;
+  type?: 'button' | 'submit' | 'reset';
   className?: string; // Nueva propiedad para clases adicionales
 }
 
-const RedButton: React.FC<RedButtonProps> = ({ text, clicked, className }) => {
+const RedButton: React.FC<RedButtonProps> = ({ text, clicked, type = 'button', className }) => {
   const handleClick = () => {
       if (typeof clicked === 'function') {
           clicked();
@@ -15,8 +16,9 @@ const RedButton: React.FC<RedButtonProps> = ({ text, clicked, className }) => {
 
   return (
       <button
+          type={type}
           className={`bg-red px-5 py-1 rounded-xl text-background hover:bg-background hover:text-red transition ease-in duration-200 ${className}`}
-          onClick={handleClick}
+          onClick={clicked ? handleClick : undefined}
       >
           {text}
       </button>

@@ -1,13 +1,11 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import NavBar from '../sections/navBar';
 import Footer from '../sections/footer';
 import RedButton from '@/components/RedButton';
-// import WhiteButton from '@/components/WhiteButton';
 import Header from '@/components/Header';
-// import Paragraph from '@/components/Paragraph';
-// import Image from '@/components/Image';
+import Paragraph from '@/components/Paragraph';
 
 interface PersonalInfo {
   firstName: string;
@@ -62,11 +60,17 @@ const ProgressiveForm: React.FC = () => {
   });
 
   const handleNext = () => {
-    setStep((prev) => Math.min(prev + 1, totalSteps));
+    setStep((prev) => {
+      const nextStep = Math.min(prev + 1, totalSteps);
+      return nextStep;
+    });
   };
 
   const handleBack = () => {
-    setStep((prev) => Math.max(prev - 1, 1));
+    setStep((prev) => {
+      const prevStep = Math.max(prev - 1, 1);
+      return prevStep;
+    });
   };
 
   const getCurrentStepData = (): keyof FormData => {
@@ -100,11 +104,27 @@ const ProgressiveForm: React.FC = () => {
     }));
   };
 
+  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form data submission
-    console.log('Form submitted', formData);
+    // Save formData to local storage
+    localStorage.setItem('formData', JSON.stringify(formData));
+    // Show success message
+    setShowSuccessMessage(true);
+    // After 2 seconds, redirect to root page
+    setTimeout(() => {
+      window.location.href = '/';
+    }, 3000);
   };
+
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [step]);
 
   const renderStep = () => {
     switch (step) {
@@ -253,41 +273,54 @@ const ProgressiveForm: React.FC = () => {
     }
   };
 
-  const progressPercentage = (step / totalSteps) * 100;
+  const progressPercentage = ((step - 1) / (totalSteps - 1)) * 100;
 
   return (
     <>
       <NavBar />
-      <div className="w-96 flex flex-col gap-10 px-5 py-3 mx-auto mt-10">
-        {/* Progress Bar */}
-        <div className="mb-6">
-          <div className="w-full bg-grey rounded-full h-2.5">
-            <div
-              className="bg-red h-2.5 rounded-full"
-              style={{ width: `${progressPercentage}%` }}
-            ></div>
+      <div className="flex-grow">
+            {showSuccessMessage ? (
+              <div className="flex flex-col items-center justify-center mt-10">
+                <Header text="Form Submitted Successfully!" color="red" />
+                <Paragraph text="Thank you for submitting the form. You will be redirected shortly." />
+              </div>
+            ) : (
+              <div
+                ref={formRef}
+                className="max-w-xl w-full flex flex-col gap-10 px-5 py-3 mx-auto mt-10"
+              >
+          {/* Form */}
+          <form onSubmit={handleSubmit}>
+            {renderStep()}
+            {/* Buttons */}
+            <div className="flex mt-6">
+              {step > 1 && (
+                <RedButton text="Back" clicked={handleBack} />
+              )}
+              <div className="ml-auto">
+                {step < totalSteps && (
+                  <RedButton text="Next" clicked={handleNext} />
+                )}
+                {step === totalSteps && (
+                  <RedButton text="Submit" type="submit" />
+                )}
+              </div>
+            </div>
+          </form>
+          {/* Progress Bar */}
+          <div className="mb-6">
+            <div className="w-full bg-grey rounded-full h-2.5">
+              <div
+                className="bg-red h-2.5 rounded-full"
+                style={{ width: `${progressPercentage}%` }}
+              ></div>
+            </div>
           </div>
         </div>
-        {/* Form */}
-        <form onSubmit={handleSubmit}>
-          {renderStep()}
-          {/* Buttons */}
-          <div className="flex justify-between mt-6">
-            {step > 1 && (
-              <RedButton text="Back" clicked={handleBack} />
-            )}
-            {step < totalSteps && (
-              <RedButton text="Next" clicked={handleNext} />
-            )}
-            {step === totalSteps && (
-              <RedButton text="Submit" type="submit" />
-            )}
-          </div>
-        </form>
+      )}
       </div>
       <Footer />
     </>
   );
 };
-
 export default ProgressiveForm;

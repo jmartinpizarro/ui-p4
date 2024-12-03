@@ -4,22 +4,15 @@ import WhiteButton from "@/components/WhiteButton"
 import { registerPopUp } from "../utils/register"
 import { logInPopUp } from "../utils/logIn"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 const NavBar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false)
-    const [isUserLogged, setIsUserLogged] = useState(false)
-
-    useEffect(() => {
-        // Verifica si hay un usuario logueado al cargar el componente
-        const userLogged = localStorage.getItem('userLogged')
-        setIsUserLogged(!!userLogged) // Convierte el valor a booleano
-    }, [])
 
     return (
         <nav className="flex justify-between items-center h-24 w-full bg-palered px-10 relative">
             {/* Logo */}
-            <Image route="/logo.png" height={'72'} width={'72'} alternativeDesc="Santa Claus Logo" />
+            <Image route="/logo.png" height={'72'} width={'72'} alternativeDesc="Santa Claus Logo"></Image>
 
             {/* Hamburger Button */}
             <button
@@ -27,7 +20,7 @@ const NavBar: React.FC = () => {
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <Image
-                    route={`${isOpen ? '/cross.png' : '/list.png'}`}
+                    route={`${isOpen ? '/cross.png' : 'list.png'}`}
                     width="16"
                     height="16"
                     alternativeDesc="Toggle Menu"
@@ -42,16 +35,15 @@ const NavBar: React.FC = () => {
                 <a className="text-background hover:underline" href="#activities">Experiencias navideñas</a>
 
                 {/* Autenticación para Desktop */}
-                {!isUserLogged ? (
-                    <div className="autenticator flex flex-row gap-5">
-                        <WhiteButton text="Iniciar sesión" clicked={logInPopUp} />
-                        <RedButton text="Registrarse" clicked={registerPopUp} />
-                    </div>
-                ) : (
-                    <div className="isLogin flex">
-                        <WhiteButton text="👤" clicked={() => console.log('popUp to create')} />
-                    </div>
-                )}
+                <div className="autenticator flex flex-row gap-5">
+                    <WhiteButton text="Iniciar sesión" clicked={logInPopUp}></WhiteButton>
+                    <RedButton text="Registrarse" clicked={registerPopUp}></RedButton>
+                </div>
+
+                {/* Contenido para usuarios logueados (Desktop) */}
+                <div className="isLogin hidden">
+                    <WhiteButton text="👤" clicked={() => console.log('popUp to create')}></WhiteButton>
+                </div>
             </div>
 
             {/* Mobile Menu */}
@@ -66,30 +58,33 @@ const NavBar: React.FC = () => {
                     <Image route="/cross.png" width="12" height="12" alternativeDesc="Close menu" />
                 </button>
                 <ul className="flex flex-col items-start gap-5 p-10">
+
                     <a className="text-background hover:underline" href="#intro" onClick={() => setIsOpen(false)}>
                         Papá Noel
                     </a>
+
                     <a className="text-background hover:underline" href="#map" onClick={() => setIsOpen(false)}>
                         El mapa
                     </a>
+
                     <a className="text-background hover:underline" href="#sendLetters" onClick={() => setIsOpen(false)}>
                         ¡Envía tu carta!
                     </a>
+
                     <a className="text-background hover:underline" href="#activities" onClick={() => setIsOpen(false)}>
                         Experiencias navideñas
                     </a>
 
                     {/* Autenticación para Mobile */}
-                    {!isUserLogged ? (
-                        <div className="autenticator flex flex-row gap-5">
-                            <WhiteButton text="Iniciar sesión" clicked={logInPopUp} />
-                            <RedButton text="Registrarse" clicked={registerPopUp} />
-                        </div>
-                    ) : (
-                        <div className="isLogin flex">
-                            <WhiteButton text="👤" clicked={() => console.log('popUp to create')} />
-                        </div>
-                    )}
+                    <div className="autenticator flex flex-row gap-5">
+                        <WhiteButton text="Iniciar sesión" clicked={logInPopUp}></WhiteButton>
+                        <RedButton text="Registrarse" clicked={registerPopUp}></RedButton>
+                    </div>
+
+                    {/* Contenido para usuarios logueados (Mobile) */}
+                    <div className="isLogin hidden">
+                        <WhiteButton text="👤" clicked={() => console.log('popUp to create')}></WhiteButton>
+                    </div>
                 </ul>
             </div>
         </nav>

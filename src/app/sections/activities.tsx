@@ -1,5 +1,6 @@
 import Header from "@/components/Header"
 import RedButton from "@/components/RedButton"
+import Link from 'next/link'
 
 const Activities: React.FC = () => {
     return (
@@ -25,11 +26,17 @@ const Activities: React.FC = () => {
                         No pierdas esta oportunidad de hacerle todas tus preguntas y compartir tus deseos. <br />
                         Regístrate y asegúrate de reservar tu cita para este evento único. ¡Haz que este diciembre sea realmente mágico!
                     </p>
-                    <RedButton text="¡Quiero ver a Papá Noel!" clicked={() => { console.log('video llamada si y solo si está registrado') }}></RedButton>
-                </form>
+                    <Link href="/videocall">
+                        
+                            <RedButton text="¡Quiero ver a Papá Noel!" clicked={() => { console.log('/videocall') }}></RedButton>
+                        
+                    </Link>
+                    </form>
             </article>
         </section>
     )
 }
 
 export default Activities
+
+// if login null => redirigir a login page (para ver e)

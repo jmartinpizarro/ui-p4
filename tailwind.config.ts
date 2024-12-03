@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      aspectRatio: {
+        '16/9': '16 / 9',  // Aquí se agrega la relación de aspecto personalizada
+      },
       colors: {
         black: "#0B090A",
         red: "#BA181B",

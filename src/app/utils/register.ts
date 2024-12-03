@@ -111,7 +111,8 @@ export function registerPopUp() {
                 }
                 closePopUp(buttonClicked)
 
-            } else if ((buttonClicked as HTMLButtonElement).name === "negate") {
+            } else if ((buttonClicked as HTMLElement).getAttribute('name') === "negate") {
+                console.log('holaaaa')
                 if (event.target instanceof HTMLElement) {
                     closePopUp(event.target);
                 } else {

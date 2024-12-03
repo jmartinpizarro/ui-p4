@@ -311,7 +311,7 @@ const ProgressiveForm: React.FC = () => {
           <div className="mb-6">
             <div className="w-full bg-grey rounded-full h-2.5">
               <div
-                className="bg-red h-2.5 rounded-full"
+                className="bg-red h-2.5 rounded-full transition-all duration-500"
                 style={{ width: `${progressPercentage}%` }}
               ></div>
             </div>

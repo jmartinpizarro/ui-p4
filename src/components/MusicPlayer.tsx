@@ -1,115 +1,55 @@
 // components/MusicPlayer.tsx
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-
-interface Song {
-  title: string;
-  src: string;
-}
-
-const songs: Song[] = [
-  // { title: 'Jingle Bells', src: '/music/jingle_bells.mp3' },
-  // { title: 'Silent Night', src: '/music/silent_night.mp3' },
-  // { title: 'We Wish You a Merry Christmas', src: '/music/we_wish_you.mp3' },
-  { title: 'All I Want For Christmas Is You', src: './music/all_i_want_metal.mp3' },
-  { title: 'Jingle Bells Cock', src: './music/jingle_bells_cock.mp3' },
-  { title: 'It\'s Beginning To Look A Lot Like Christmas', src: './music/beginning_christmas.mp3' },
-  { title: 'The Most Wonderful Time Of The Year', src: './music/most_wonderful.mp3' },
-  { title: 'Police Stop My Car', src: './music/police_stop_my_car.mp3' },
-  // Add more songs as needed
-];
-
-// Singleton audio instance
-let audioInstance: HTMLAudioElement | null = null;
+import React, { useState, useEffect } from 'react';
+import AudioManager from '@/app/utils/audioManager';
 
 const MusicPlayer: React.FC = () => {
-  // State variables
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false); // Start paused
-  const [currentSongIndex, setCurrentSongIndex] = useState<number>(0);
   const [showPopup, setShowPopup] = useState<boolean>(false);
-  const [volume, setVolume] = useState<number>(0.5); // Initial volume at 50%
 
-  // Initialize audioInstance if it's null
-  if (!audioInstance) {
-    audioInstance = new Audio(songs[currentSongIndex].src);
-    audioInstance.volume = volume;
-    audioInstance.onended = () => {
-      handleNext();
-    };
-  }
+  const audioManager = AudioManager.getInstance();
 
-  // Handle play errors
-  const handlePlayError = (error: any) => {
-    if (error.name === 'NotAllowedError') {
-      // Autoplay was prevented
-      setIsPlaying(false);
-    } else {
-      console.error('Error playing audio:', error);
-    }
-  };
+  // Local state mirrors AudioManager's state
+  const [isPlaying, setIsPlaying] = useState<boolean>(audioManager.isPlaying);
+  const [currentSongIndex, setCurrentSongIndex] = useState<number>(
+    audioManager.currentSongIndex
+  );
+  const [volume, setVolume] = useState<number>(audioManager.volume);
+  const songs = audioManager.getSongs();
 
-  // Update audio source when currentSongIndex changes
+  // Sync local state with AudioManager state
   useEffect(() => {
-    if (audioInstance) {
-      audioInstance.src = songs[currentSongIndex].src;
-      if (isPlaying) {
-        audioInstance.play().catch(handlePlayError);
-      }
-    }
-  }, [currentSongIndex]);
+    setIsPlaying(audioManager.isPlaying);
+    setCurrentSongIndex(audioManager.currentSongIndex);
+    setVolume(audioManager.volume);
+  }, []);
 
-  // Update play/pause state
-  useEffect(() => {
-    if (audioInstance) {
-      if (isPlaying) {
-        audioInstance.play().catch(handlePlayError);
-      } else {
-        audioInstance.pause();
-      }
-    }
-  }, [isPlaying]);
-
-  // Update volume
-  useEffect(() => {
-    if (audioInstance) {
-      audioInstance.volume = volume;
-    }
-  }, [volume]);
-
-  // Toggle play/pause
   const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
+    audioManager.togglePlayPause();
+    setIsPlaying(audioManager.isPlaying);
   };
 
-  // Next song
   const handleNext = () => {
-    setCurrentSongIndex((prevIndex) => (prevIndex + 1) % songs.length);
-    setIsPlaying(true);
+    audioManager.handleNext();
+    setCurrentSongIndex(audioManager.currentSongIndex);
   };
 
-  // Previous song
   const handlePrev = () => {
-    setCurrentSongIndex((prevIndex) =>
-      prevIndex === 0 ? songs.length - 1 : prevIndex - 1
-    );
-    setIsPlaying(true);
+    audioManager.handlePrev();
+    setCurrentSongIndex(audioManager.currentSongIndex);
   };
 
-  // Select song from list
-  const handleSongSelect = (index: number) => {
-    setCurrentSongIndex(index);
-    setIsPlaying(true);
-  };
-
-  // Handle volume change
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(e.target.value);
+    audioManager.setVolume(newVolume);
     setVolume(newVolume);
-    if (audioInstance) {
-      audioInstance.volume = newVolume;
-    }
+  };
+
+  const handleSongSelect = (index: number) => {
+    audioManager.selectSong(index);
+    setCurrentSongIndex(index);
+    setIsPlaying(true);
   };
 
   // Close popup when clicking outside
@@ -121,6 +61,12 @@ const MusicPlayer: React.FC = () => {
   const handlePopupClick = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
+
+  // Attempt to autoplay on initial load
+  useEffect(() => {
+    audioManager.play();
+    setIsPlaying(audioManager.isPlaying);
+  }, []);
 
   return (
     <>
@@ -152,7 +98,8 @@ const MusicPlayer: React.FC = () => {
 
             {/* Now Playing */}
             <p className="mb-2">
-              Now Playing: <strong>{songs[currentSongIndex].title}</strong>
+              Now Playing:{' '}
+              <strong>{songs[currentSongIndex].title}</strong>
             </p>
 
             {/* Controls */}

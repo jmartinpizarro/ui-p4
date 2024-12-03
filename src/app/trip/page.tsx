@@ -6,6 +6,7 @@ import Footer from '../sections/footer';
 import RedButton from '@/components/RedButton';
 import Header from '@/components/Header';
 import Paragraph from '@/components/Paragraph';
+import { useRouter } from 'next/navigation';
 
 interface PersonalInfo {
   firstName: string;
@@ -38,6 +39,7 @@ interface FormData {
 const ProgressiveForm: React.FC = () => {
   const [step, setStep] = useState<number>(1);
   const totalSteps: number = 4;
+  const router = useRouter();
 
   const [formData, setFormData] = useState<FormData>({
     personalInfo: {
@@ -114,7 +116,7 @@ const ProgressiveForm: React.FC = () => {
     setShowSuccessMessage(true);
     // After 2 seconds, redirect to root page
     setTimeout(() => {
-      window.location.href = '/';
+      router.push('/');
     }, 3000);
   };
 

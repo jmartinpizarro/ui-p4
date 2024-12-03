@@ -1,4 +1,5 @@
 // components/MusicPlayer.tsx
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -18,12 +19,15 @@ const MusicPlayer: React.FC = () => {
   const [volume, setVolume] = useState<number>(audioManager.volume);
   const songs = audioManager.getSongs();
 
-  // Sync local state with AudioManager state
+  // Save isPlaying state to localStorage whenever it changes
   useEffect(() => {
-    setIsPlaying(audioManager.isPlaying);
-    setCurrentSongIndex(audioManager.currentSongIndex);
-    setVolume(audioManager.volume);
-  }, []);
+    localStorage.setItem('isPlaying', isPlaying.toString());
+  }, [isPlaying]);
+
+  // Save volume to localStorage whenever it changes (optional)
+  useEffect(() => {
+    localStorage.setItem('audioVolume', volume.toString());
+  }, [volume]);
 
   const togglePlayPause = () => {
     audioManager.togglePlayPause();
@@ -62,10 +66,11 @@ const MusicPlayer: React.FC = () => {
     e.stopPropagation();
   };
 
-  // Attempt to autoplay on initial load
+  // Attempt to play on initial load if isPlaying is true
   useEffect(() => {
-    audioManager.play();
-    setIsPlaying(audioManager.isPlaying);
+    if (audioManager.isPlaying) {
+      audioManager.play();
+    }
   }, []);
 
   return (
@@ -87,19 +92,27 @@ const MusicPlayer: React.FC = () => {
         </button>
       </div>
 
-      {/* Popup */}
+      {/* Popup and Overlay */}
       {showPopup && (
         <div
-          className="fixed bottom-20 right-4 w-64 bg-white shadow-lg rounded-lg p-4 z-50"
+          className="fixed inset-0 z-50 flex items-end justify-end"
           onClick={handleOverlayClick}
         >
-          <div onClick={handlePopupClick}>
+          <div
+            className="bg-white shadow-lg rounded-lg p-4 w-64 mb-20 mr-4"
+            onClick={handlePopupClick}
+          >
             <h3 className="text-lg font-semibold mb-2">Music Player</h3>
 
             {/* Now Playing */}
             <p className="mb-2">
-              Now Playing:{' '}
-              <strong>{songs[currentSongIndex].title}</strong>
+              {isPlaying ? (
+                <>
+                  Now Playing: <strong>{songs[currentSongIndex].title}</strong>
+                </>
+              ) : (
+                'Music is paused.'
+              )}
             </p>
 
             {/* Controls */}

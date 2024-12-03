@@ -3,8 +3,8 @@
 class AudioManager {
   private static instance: AudioManager;
   public audio: HTMLAudioElement;
-  public isPlaying: boolean = false;
-  public volume: number = 0.2;
+  public isPlaying: boolean;
+  public volume: number;
   private songs: { title: string; src: string }[];
   public currentSongIndex: number = 0;
 
@@ -19,7 +19,15 @@ class AudioManager {
     ];
 
     this.audio = new Audio(this.songs[this.currentSongIndex].src);
+
+    // Initialize volume and isPlaying from localStorage or defaults
+    const savedVolume = localStorage.getItem('audioVolume');
+    this.volume = savedVolume ? parseFloat(savedVolume) : 0.2;
     this.audio.volume = this.volume;
+
+    const savedIsPlaying = localStorage.getItem('isPlaying');
+    this.isPlaying = savedIsPlaying ? savedIsPlaying === 'true' : false;
+
     this.audio.onended = this.handleNext;
   }
 

@@ -1,11 +1,44 @@
-import Header from "@/components/Header"
-import Paragraph from "@/components/Paragraph"
-import Image from "@/components/Image"
-import RedButton from "@/components/RedButton"
+import { useEffect, useState } from 'react';
+import Header from "@/components/Header";
+import Paragraph from "@/components/Paragraph";
+import Image from "@/components/Image";
+import RedButton from "@/components/RedButton";
+import { registerPopUp } from "../utils/register";
 
-import { registerPopUp } from "../utils/register"
+import React, { useContext } from 'react';
+import { serialize } from 'v8';
 
 const Intro: React.FC = () => {
+    const [isKid, setIsKid] = useState<boolean | null>(null); // Estado para verificar si es niño
+    const [userLogged, setUserLogged] = useState<string | null>(null); // Estado para verificar si hay usuario loggeado
+    // useEffect para cargar el estado de localStorage
+    useEffect(() => {
+        // Obtener el nombre del usuario de localStorage (sin parsear)
+        const storedUserLogged = localStorage.getItem('userLogged');
+        const storedIsKid = localStorage.getItem('isKid');
+        
+        // Establecer el estado basado en los valores obtenidos de localStorage
+        setIsKid(storedIsKid === "child");
+        setUserLogged(storedUserLogged);
+    }, []);
+
+    // Determinar los valores de catálogo y prueba basados en el estado
+    var toyCatalogueLink
+    var testOrListLink
+    if (userLogged === null){
+        toyCatalogueLink = '/toycataloguekids';
+        testOrListLink = '/test';
+    }
+    else if (isKid === false){
+        toyCatalogueLink = '/toycatalogueadult';
+        testOrListLink = '/listacompra';
+    }
+
+    console.log("isKid is",isKid);
+    console.log("userLogged is",userLogged);
+    console.log("toyCatalogueLink is",toyCatalogueLink);
+    console.log("testOrListLink is",testOrListLink);
+
     return (
         <section className="px-4 py-10 flex flex-col items-center justify-center gap-10 min-h-[90vh]">
             <Header text="¡Conoce a Papá Noel!" color="red"></Header>
@@ -18,10 +51,26 @@ const Intro: React.FC = () => {
 
                     <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                         <RedButton text="¡A la galería!" clicked={'/gallery'}></RedButton>
-                        <RedButton text="Regístrarte" clicked={registerPopUp}></RedButton>
-                        <RedButton text="Catálogo de Juguetes" clicked={'/toycatalogueadult'}></RedButton>
-                        <RedButton text="Test del Niño Bueno" clicked={'/test'}></RedButton>
+                        <RedButton text="Regístrate" clicked={registerPopUp}></RedButton>
                         <RedButton text="Reserva tu viaje" clicked={'/trip'}></RedButton>
+                        {userLogged === null && (
+                            <>
+                                <RedButton text="Catálogo de Juguetes" clicked={'/toycataloguekids'}></RedButton>
+                                <RedButton text="Test del Niño Bueno" clicked={'/test'}></RedButton>
+                            </>
+                        )}
+                        {userLogged !== null && isKid === false && (
+                            <>
+                                <RedButton text="Catálogo de Juguetes" clicked={'/toycatalogueadult'}></RedButton>
+                                <RedButton text="Lista de la compra" clicked={'/listacompra'}></RedButton>
+                            </>
+                        )}
+                        {userLogged !== null && isKid === true && (
+                            <>
+                            <RedButton text="Catálogo de Juguetes" clicked={'/toycataloguekids'}></RedButton>
+                            <RedButton text="Test del niño bueno" clicked={'/test'}></RedButton>
+                        </>
+                        )}
                     </div>
                 </div>
 
@@ -34,7 +83,7 @@ const Intro: React.FC = () => {
                 </div>
             </article>
         </section>
-    )
-}
+    );
+};
 
-export default Intro
+export default Intro;

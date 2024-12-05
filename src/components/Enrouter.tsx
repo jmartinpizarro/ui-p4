@@ -1,6 +1,9 @@
 import React from "react";
 import WhiteButton from "@/components/WhiteButton";
 import RedButton from "@/components/RedButton";
+import { renderInfoPopUp } from "../app/utils/renderInfoPopUp"
+
+
 
 interface PopUpProps {
   isVisible: boolean;
@@ -16,8 +19,8 @@ const PopUp: React.FC<PopUpProps> = ({ isVisible, onClose }) => {
         <h2 className="text-xl font-bold text-center mb-4">Opciones</h2>
         <div className="flex flex-col gap-4">
           <WhiteButton
-            text="Opción 1"
-            clicked={() => console.log("Opción 1 seleccionada")}
+            text="Mis datos"
+            clicked={renderInfoPopUp}
           />
           <RedButton
             text="Opción 2"

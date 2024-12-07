@@ -1,10 +1,39 @@
+'use client';
+
+import { logInPopUp } from "../utils/logIn"
+
 import Header from "@/components/Header"
 import RedButton from "@/components/RedButton"
 import Link from 'next/link'
+import WhiteButton from "@/components/WhiteButton"
+import { useState, useEffect } from 'react';
+
+
 
 const Activities: React.FC = () => {
+    const [isOpen, setIsOpen] = useState(false)
+    const [isPopUpVisible, setIsPopUpVisible] = useState(false)
+    const isLoggedIn = () => {
+        // Puedes cambiar esta lógica según cómo estés manejando el estado de login
+        const userLogged = localStorage.getItem('userLogged');  // Por ejemplo, verificamos el estado de login en localStorage
+        return userLogged === 'true'; // Si está logueado, el valor es 'true'
+    };
+
+    // Función para manejar el clic del botón
+    const handleButtonClick = (ref: string) => {
+        const userLogged = localStorage.getItem('userLogged');  // Comprobamos si el usuario está logueado
+
+        if (isLoggedIn()){
+            // Si está logueado, redirigimos al video
+            window.location.href = ref;
+        } else {
+            // Si no está logueado, mostramos el popup
+            setIsPopUpVisible(true);
+            
+        }
+    };
     return (
-        <section className="px-4 py-10 flex flex-col items-center justify-center gap-10 min-h-[90vh]">
+        <section id="activities" className="px-4 py-10 flex flex-col items-center justify-center gap-10 min-h-[90vh]">
             <Header text="vive la navidad ahora" color="red"></Header>
 
             <article className="flex flex-col sm:flex-row items-center justify-between gap-4 w-full max-w-2xl mx-auto my-5">
@@ -28,15 +57,27 @@ const Activities: React.FC = () => {
                     </p>
                     <Link href="/videocall">
                         
-                            <RedButton text="¡Quiero ver a Papá Noel!" clicked={() => { console.log('/videocall') }}></RedButton>
+                            <RedButton text="¡Quiero ver a Papá Noel!" clicked={() => handleButtonClick("/videocall")}></RedButton>
+                            <div className="isLogin hidden">
+                                <WhiteButton text="👤" clicked={() => handleButtonClick}></WhiteButton>
+                            </div>
                         
                     </Link>
-                    </form>
+
+                    {/*
+                    <Link href="/videocall">
+                        
+                            <RedButton text="¡Quiero ver a Papá Noel!" clicked={() =>handleButtonClick('/videocall')}></RedButton>
+                        
+                    </Link>*/}
+                    </form> 
+                    
             </article>
         </section>
     )
 }
 
 export default Activities
+
 
 // if login null => redirigir a login page (para ver e)

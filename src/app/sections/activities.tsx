@@ -44,7 +44,7 @@ const Activities: React.FC = () => {
                         Además, disfruta del hermoso paisaje nevado mientras te relajas en el cálido refugio. <br />
                         ¿A qué esperas para hacer realidad este sueño? ¡Apúntate hoy y comienza la aventura!
                     </p>
-                    <RedButton text="¡Me apunto!" clicked={() => { console.log('popUp de reserva') }}></RedButton>
+                    <RedButton text="¡Me apunto!" clicked={'/trip'}></RedButton>
                 </form>
 
                 <form className="flex flex-col gap-2 bg-grey rounded-2xl items-center justify-between py-10 px-5 w-full sm:w-[350px] h-[500px]">

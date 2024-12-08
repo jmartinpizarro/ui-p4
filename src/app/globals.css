@@ -143,3 +143,13 @@ body {
   color: var(--pale-white);
   background-color: var(--red);
 }
+
+.common {
+  color: var(--dark-grey);
+  max-width: 50%;
+}
+
+.highlighted {
+  text-decoration: underline;
+  color: var(--pale-red);
+}

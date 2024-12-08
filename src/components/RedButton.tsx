@@ -1,31 +1,29 @@
 import { useRouter } from 'next/navigation';
 
 interface RedButtonProps {
-  text: string;
-  clicked?: (() => void) | string;
-  type?: 'button' | 'submit' | 'reset';
-  className?: string; // Nueva propiedad para clases adicionales
+    text: string;
+    clicked: ((e: React.MouseEvent<HTMLButtonElement>) => void) | string;
+    className?: string;
 }
 
-const RedButton: React.FC<RedButtonProps> = ({ text, clicked, type = 'button', className }) => {
-  const router = useRouter();
 
-  const handleClick = () => {
-    if (typeof clicked === 'function') {
-      clicked();
-    } else if (typeof clicked === 'string') {
-      router.push(clicked);
-    }
+
+const RedButton: React.FC<RedButtonProps> = ({ text, clicked, className }) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (typeof clicked === 'function') {
+          clicked(e);
+      } else if (typeof clicked === 'string') {
+          window.location.href = clicked;
+      }
   };
 
   return (
-    <button
-      type={type}
-      className={`bg-red px-5 py-1 rounded-xl text-background hover:bg-background hover:text-red transition ease-in duration-200 ${className}`}
-      onClick={clicked ? handleClick : undefined}
-    >
-      {text}
-    </button>
+      <button
+          className={`bg-red px-5 py-1 rounded-xl text-background hover:bg-background hover:text-red transition ease-in duration-200 ${className}`}
+          onClick={handleClick}
+      >
+          {text}
+      </button>
   );
 };
 

@@ -1,3 +1,4 @@
+import { insertLetter } from "@/app/utils/insertLetter";
 import RedButton from "./RedButton";
 
 interface FormProps {
@@ -8,7 +9,7 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = ({title, buttonText, inputs}) => {
     return (
-        <form className="w-96 flex flex-col gap-10 px-5 py-3">
+        <form className="w-96 flex flex-col gap-10 px-5 py-3" name="letter">
             {title && (
                 <h3 className="text-grey text-lg text-center">{title}</h3>
             )}
@@ -21,14 +22,14 @@ const Form: React.FC<FormProps> = ({title, buttonText, inputs}) => {
                             id={input}
                             type="text"
                             placeholder={`Ingrese ${input}`}
-                            className="w-full border py-2 px-5 border-darkgrey rounded-2xl"
+                            className="w-full border py-2 px-5 text-darkgrey border-darkgrey rounded-2xl"
                         />
                     </div>
                 ))}
             </div>
 
             <div className="w-2/4 mx-auto flex items-center flex-row justify-center">
-                <RedButton text={buttonText} clicked={() => { console.log('some action') }} />
+                <RedButton text={buttonText} clicked={(e) => {insertLetter(e)}} />
             </div>
         </form>
     );

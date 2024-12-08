@@ -2,6 +2,7 @@ import React from "react";
 import WhiteButton from "@/components/WhiteButton";
 import RedButton from "@/components/RedButton";
 import { renderInfoPopUp } from "../app/utils/renderInfoPopUp"
+import { renderLetterPopUp } from "@/app/utils/rendeLetterPopUp";
 
 
 
@@ -23,8 +24,8 @@ const PopUp: React.FC<PopUpProps> = ({ isVisible, onClose }) => {
             clicked={renderInfoPopUp}
           />
           <RedButton
-            text="Opción 2"
-            clicked={() => console.log("Opción 2 seleccionada")}
+            text="Mis cartas"
+            clicked={renderLetterPopUp}
           />
             <button className="absolute top-2 right-2 text-gray-600 hover:text-black" onClick={onClose}>✖</button>
         </div>

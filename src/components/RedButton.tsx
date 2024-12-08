@@ -1,13 +1,14 @@
 interface RedButtonProps {
-  text: string;
-  clicked: (() => void) | string;
-  className?: string; // Nueva propiedad para clases adicionales
-}
+    text: string;
+    clicked: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    className?: string;
+  }
+
 
 const RedButton: React.FC<RedButtonProps> = ({ text, clicked, className }) => {
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       if (typeof clicked === 'function') {
-          clicked();
+          clicked(e);
       } else if (typeof clicked === 'string') {
           window.location.href = clicked;
       }

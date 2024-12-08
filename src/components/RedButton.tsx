@@ -1,8 +1,9 @@
 interface RedButtonProps {
     text: string;
-    clicked: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    clicked: ((e: React.MouseEvent<HTMLButtonElement>) => void) | string;
     className?: string;
-  }
+}
+
 
 
 const RedButton: React.FC<RedButtonProps> = ({ text, clicked, className }) => {

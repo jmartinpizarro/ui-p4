@@ -1,10 +1,9 @@
 import React from "react";
 import WhiteButton from "@/components/WhiteButton";
 import RedButton from "@/components/RedButton";
+
 import { renderInfoPopUp } from "../app/utils/renderInfoPopUp"
 import { renderLetterPopUp } from "@/app/utils/rendeLetterPopUp";
-
-
 
 interface PopUpProps {
   isVisible: boolean;
@@ -25,6 +24,7 @@ const PopUp: React.FC<PopUpProps> = ({ isVisible, onClose }) => {
 
   const isKid = localStorage.getItem("isKid");
   const toyCatalogue = isKid === "adult" ? "toycatalogueadult" : "toycataloguekids";
+
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">

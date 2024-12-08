@@ -4,15 +4,24 @@ import WhiteButton from "@/components/WhiteButton"
 import PopUp from "@/components/Enrouter"
 import { registerPopUp } from "../utils/register"
 import { logInPopUp } from "../utils/logIn"
-
+import { HashLink } from 'react-router-hash-link';
 import { useState } from "react"
+import Link from 'next/link'
 
 const NavBar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [isPopUpVisible, setIsPopUpVisible] = useState(false)
+    const handleScroll = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            const yOffset = -60; // Ajusta este valor según la altura de tu navbar
+            const y = element.getBoundingClientRect().top + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    };
 
     return (
-        <nav className="flex justify-between items-center h-24 w-full bg-palered px-10 relative">
+        <nav className="flex justify-between items-center h-24 w-full bg-palered px-10 relative z-50">
             {/* Logo */}
             <Image route="/logo.png" height={'72'} width={'72'} alternativeDesc="Santa Claus Logo"></Image>
 
@@ -31,10 +40,18 @@ const NavBar: React.FC = () => {
 
             {/* Desktop Menu */}
             <div className="lg:flex items-center gap-5 justify-center flex-row hidden">
-                <a className="text-background hover:underline" href="#intro">Papá Noel</a>
-                <a className="text-background hover:underline" href="#map">El mapa</a>
-                <a className="text-background hover:underline" href="#sendLetters">¡Envía tu carta!</a>
-                <a className="text-background hover:underline" href="#activities">Experiencias navideñas</a>
+                <Link href="/#intro" legacyBehavior>
+                    <a className="text-background hover:underline" onClick={() => handleScroll('intro')}>Papá Noel</a>
+                </Link>
+                <Link href="/#map" legacyBehavior>
+                    <a className="text-background hover:underline" onClick={() => handleScroll('map')}>El mapa</a>
+                </Link>
+                <Link href="/#letters" legacyBehavior>
+                    <a className="text-background hover:underline" onClick={() => handleScroll('sendLetters')}>¡Envía tu carta!</a>
+                </Link>
+                <Link href="/#activities" legacyBehavior>
+                    <a className="text-background hover:underline" onClick={() => handleScroll('activities')}>Experiencias navideñas</a>
+                </Link>
 
                 {/* Autenticación para Desktop */}
                 <div className="autenticator flex flex-row gap-5">
@@ -61,21 +78,18 @@ const NavBar: React.FC = () => {
                 </button>
                 <ul className="flex flex-col items-start gap-5 p-10">
 
-                    <a className="text-background hover:underline" href="#intro" onClick={() => setIsOpen(false)}>
-                        Papá Noel
-                    </a>
-
-                    <a className="text-background hover:underline" href="#map" onClick={() => setIsOpen(false)}>
-                        El mapa
-                    </a>
-
-                    <a className="text-background hover:underline" href="#sendLetters" onClick={() => setIsOpen(false)}>
-                        ¡Envía tu carta!
-                    </a>
-
-                    <a className="text-background hover:underline" href="#activities" onClick={() => setIsOpen(false)}>
-                        Experiencias navideñas
-                    </a>
+                <Link href="/#intro" legacyBehavior>
+                        <a className="text-background hover:underline" onClick={() =>{ setIsOpen(false); handleScroll('intro');}}>Papá Noel</a>
+                    </Link>
+                    <Link href="/#map" legacyBehavior>
+                        <a className="text-background hover:underline" onClick={() => { setIsOpen(false); handleScroll('map');}}>El mapa</a>
+                    </Link>
+                    <Link href="/#sendLetters" legacyBehavior>
+                        <a className="text-background hover:underline" onClick={() => { setIsOpen(false); handleScroll('sendLetters');}}>¡Envía tu carta!</a>
+                    </Link>
+                    <Link href="/#activities" legacyBehavior>
+                        <a className="text-background hover:underline" onClick={() => { setIsOpen(false); handleScroll('activities');}}>Experiencias navideñas</a>
+                    </Link>
 
                     {/* Autenticación para Mobile */}
                     <div className="autenticator flex flex-row gap-5">

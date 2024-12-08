@@ -10,9 +10,13 @@ import { useEffect } from "react";
 
 export default function Home() {
   useEffect(() => {
+    if (!localStorage.getItem('userLogged')) { // if we can't find the field, create it
     localStorage.setItem('userLogged', JSON.stringify(null)); // by default, no user will be logged In
+    }
+    if (!localStorage.getItem('isKid')) {
     localStorage.setItem('isKid', JSON.stringify(null))
-    if (!localStorage.getItem('letters')) { // if we can't find the field, create it
+    }
+    if (!localStorage.getItem('letters')) {
         localStorage.setItem('letters', JSON.stringify([]));
     }
     if (!localStorage.getItem('users')) {

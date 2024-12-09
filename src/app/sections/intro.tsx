@@ -32,6 +32,10 @@ const Intro: React.FC = () => {
         toyCatalogueLink = '/toycatalogueadult';
         testOrListLink = '/listacompra';
     }
+    else if (isKid === true){
+        toyCatalogueLink = '/toycataloguekids';
+        testOrListLink = '/test';
+    }
 
     return (
         <section className="px-4 py-10 flex flex-col items-center justify-center gap-10 min-h-[90vh]">

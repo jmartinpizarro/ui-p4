@@ -52,24 +52,24 @@ const Intro: React.FC = () => {
                     <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                         <RedButton text="¡A la galería!" clicked={'/gallery'}></RedButton>
                         <RedButton text="Regístrate" clicked={registerPopUp}></RedButton>
-                        {userLogged !== null && isKid === false && (
+                        {userLogged !== "null" && isKid === false && (
                             <>
                                 <RedButton text="Reserva tu viaje" clicked={'/trip'}></RedButton>
                             </>
                         )}
-                        {userLogged === null && (
+                        {userLogged === "null" && (
                             <>
                                 <RedButton text="Catálogo de Juguetes" clicked={'/toycataloguekids'}></RedButton>
                                 <RedButton text="Test del Niño Bueno" clicked={'/test'}></RedButton>
                             </>
                         )}
-                        {userLogged !== null && isKid === false && (
+                        {userLogged !== "null" && isKid === false && (
                             <>
                                 <RedButton text="Catálogo de Juguetes" clicked={'/toycatalogueadult'}></RedButton>
                                 <RedButton text="Lista de la compra" clicked={'/listacompra'}></RedButton>
                             </>
                         )}
-                        {userLogged !== null && isKid === true && (
+                        {userLogged !== "null" && isKid === true && (
                             <>
                             <RedButton text="Catálogo de Juguetes" clicked={'/toycataloguekids'}></RedButton>
                             <RedButton text="Test del niño bueno" clicked={'/test'}></RedButton>

@@ -6,7 +6,32 @@ import Header from "@/components/Header";
 import Paragraph from "@/components/Paragraph";
 import Image from "@/components/Image";
 
+import { useEffect } from "react";
+
 export default function ToyCatalogue() {
+    useEffect(() => {
+        const user = localStorage.getItem("userLogged")
+        if (user !== "null"){
+            const toRemove = document.querySelectorAll('.autenticator');
+            const toDisplay = document.querySelectorAll('.isLogin');
+            toRemove.forEach((element) => {
+                if (element instanceof HTMLElement) {
+                    element.style.display = 'none';
+                } else {
+                    console.error('Element is not an HTMLElement:', element);
+                }
+            });
+            
+            toDisplay.forEach((element) => {
+                if (element instanceof HTMLElement) {
+                    element.style.display = 'flex';
+                } else {
+                    console.error('Element is not an HTMLElement:', element);
+                }
+            });
+        }
+    }, [])
+
     const toys = [
         { name: "Pop It", price: 10.99, image: "toy1.png" },
         { name: "Comida de Madera", price: 15.99, image: "toy2.png" },

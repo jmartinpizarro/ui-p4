@@ -4,8 +4,33 @@ import Header from "@/components/Header"
 import NavBar from "../sections/navBar"
 import Footer from "../sections/footer"
 
+import { useEffect } from "react"
+
 
 export default function Gallery() {
+    useEffect(() => {
+        const user = localStorage.getItem("userLogged")
+        if (user !== "null"){
+            const toRemove = document.querySelectorAll('.autenticator');
+            const toDisplay = document.querySelectorAll('.isLogin');
+            toRemove.forEach((element) => {
+                if (element instanceof HTMLElement) {
+                    element.style.display = 'none';
+                } else {
+                    console.error('Element is not an HTMLElement:', element);
+                }
+            });
+            
+            toDisplay.forEach((element) => {
+                if (element instanceof HTMLElement) {
+                    element.style.display = 'flex';
+                } else {
+                    console.error('Element is not an HTMLElement:', element);
+                }
+            });
+        }
+    }, [])
+
     return(
         <>
         <NavBar />

@@ -12,6 +12,27 @@ export default function ShoppingList() {
     useEffect(() => {
         const savedItems = JSON.parse(localStorage.getItem('shoppingList') || '[]');
         setItems(savedItems);
+
+        const user = localStorage.getItem("userLogged")
+        if (user !== "null"){
+            const toRemove = document.querySelectorAll('.autenticator');
+            const toDisplay = document.querySelectorAll('.isLogin');
+            toRemove.forEach((element) => {
+                if (element instanceof HTMLElement) {
+                    element.style.display = 'none';
+                } else {
+                    console.error('Element is not an HTMLElement:', element);
+                }
+            });
+            
+            toDisplay.forEach((element) => {
+                if (element instanceof HTMLElement) {
+                    element.style.display = 'flex';
+                } else {
+                    console.error('Element is not an HTMLElement:', element);
+                }
+            });
+        }
     }, []);
 
     interface Item {

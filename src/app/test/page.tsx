@@ -4,9 +4,32 @@ import NavBar from "../sections/navBar";
 import Footer from "../sections/footer";
 import Header from "@/components/Header";
 import RedButton from "@/components/RedButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function GoodChildTest() {
+
+    useEffect(() => {
+        const user = localStorage.getItem("userLogged")
+        if (user !== "null"){
+            const toRemove = document.querySelectorAll('.autenticator');
+            const toDisplay = document.querySelectorAll('.isLogin');
+            toRemove.forEach((element) => {
+                if (element instanceof HTMLElement) {
+                    element.style.display = 'none';
+                } else {
+                    console.error('Element is not an HTMLElement:', element);
+                }
+            });
+            
+            toDisplay.forEach((element) => {
+                if (element instanceof HTMLElement) {
+                    element.style.display = 'flex';
+                } else {
+                    console.error('Element is not an HTMLElement:', element);
+                }
+            });
+        }
+    }, [])
     const questions = [
         "¿Has ayudado a tus padres en casa?",
         "¿Has sido amable con tus amigos?",

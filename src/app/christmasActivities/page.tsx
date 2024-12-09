@@ -5,8 +5,33 @@ import Link from 'next/link';
 import NavBar from "../sections/navBar";
 import Footer from "../sections/footer";
 
+import { useEffect } from "react";
+
 const Activities: React.FC = () => {
+    useEffect(() => {
+        const user = localStorage.getItem("userLogged")
+        if (user !== "null"){
+            const toRemove = document.querySelectorAll('.autenticator');
+            const toDisplay = document.querySelectorAll('.isLogin');
+            toRemove.forEach((element) => {
+                if (element instanceof HTMLElement) {
+                    element.style.display = 'none';
+                } else {
+                    console.error('Element is not an HTMLElement:', element);
+                }
+            });
+            
+            toDisplay.forEach((element) => {
+                if (element instanceof HTMLElement) {
+                    element.style.display = 'flex';
+                } else {
+                    console.error('Element is not an HTMLElement:', element);
+                }
+            });
+        }
+    }, [])
     return (
+        
         <>
             <NavBar />
             <section className="px-4 py-10 flex flex-col items-center justify-center gap-10 min-h-[90vh] bg-gray-50">

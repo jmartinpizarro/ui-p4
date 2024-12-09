@@ -4,7 +4,6 @@ import WhiteButton from "@/components/WhiteButton"
 import PopUp from "@/components/Enrouter"
 import { registerPopUp } from "../utils/register"
 import { logInPopUp } from "../utils/logIn"
-import { HashLink } from 'react-router-hash-link';
 import { useState } from "react"
 import Link from 'next/link'
 

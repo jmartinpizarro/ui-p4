@@ -37,6 +37,29 @@ interface FormData {
 }
 
 const ProgressiveForm: React.FC = () => {
+
+  useEffect(() => {
+    const user = localStorage.getItem("userLogged")
+    if (user !== "null"){
+        const toRemove = document.querySelectorAll('.autenticator');
+        const toDisplay = document.querySelectorAll('.isLogin');
+        toRemove.forEach((element) => {
+            if (element instanceof HTMLElement) {
+                element.style.display = 'none';
+            } else {
+                console.error('Element is not an HTMLElement:', element);
+            }
+        });
+        
+        toDisplay.forEach((element) => {
+            if (element instanceof HTMLElement) {
+                element.style.display = 'flex';
+            } else {
+                console.error('Element is not an HTMLElement:', element);
+            }
+        });
+    }
+}, [])  
   const [step, setStep] = useState<number>(1);
   const totalSteps: number = 4;
   const router = useRouter();

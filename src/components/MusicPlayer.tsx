@@ -102,10 +102,10 @@ const MusicPlayer: React.FC = () => {
             className="bg-white shadow-lg rounded-lg p-4 w-64 mb-20 mr-4"
             onClick={handlePopupClick}
           >
-            <h3 className="text-lg font-semibold mb-2">Music Player</h3>
+            <h3 className="text-darkgrey text-lg font-semibold mb-2">Music Player</h3>
 
             {/* Now Playing */}
-            <p className="mb-2">
+            <p className="text-darkgrey mb-2">
               {isPlaying ? (
                 <>
                   Now Playing: <strong>{songs[currentSongIndex].title}</strong>
@@ -117,20 +117,20 @@ const MusicPlayer: React.FC = () => {
 
             {/* Controls */}
             <div className="flex items-center justify-between mb-2">
-              <button onClick={handlePrev} className="text-gray-700">
+              <button onClick={handlePrev} className="text-darkgrey">
                 &#9664; Prev
               </button>
-              <button onClick={togglePlayPause} className="text-gray-700">
+              <button onClick={togglePlayPause} className="text-darkgrey">
                 {isPlaying ? 'Pause' : 'Play'}
               </button>
-              <button onClick={handleNext} className="text-gray-700">
+              <button onClick={handleNext} className="text-darkgrey">
                 Next &#9654;
               </button>
             </div>
 
             {/* Volume Slider */}
             <div className="mb-2">
-              <label htmlFor="volume" className="font-semibold mb-1">
+              <label htmlFor="volume" className="text-darkgrey font-semibold mb-1">
                 Volume:
               </label>
               <input
@@ -147,13 +147,13 @@ const MusicPlayer: React.FC = () => {
 
             {/* Song Selection */}
             <div>
-              <h4 className="font-semibold mb-1">Select a Song:</h4>
+              <h4 className="text-darkgrey font-semibold mb-1">Select a Song:</h4>
               <ul className="max-h-32 overflow-y-auto">
                 {songs.map((song, index) => (
                   <li key={index}>
                     <button
                       onClick={() => handleSongSelect(index)}
-                      className={`text-left w-full ${
+                      className={`text-darkgrey text-left w-full ${
                         index === currentSongIndex ? 'font-bold' : ''
                       }`}
                     >

@@ -143,7 +143,7 @@ const ProgressiveForm: React.FC = () => {
                   name="firstName"
                   value={formData.personalInfo.firstName}
                   onChange={handleChange}
-                  className="w-full border py-2 px-5 border-darkgrey rounded-2xl"
+                  className="text-darkgrey w-full border py-2 px-5 border-darkgrey rounded-2xl"
                   placeholder="Enter First Name"
                 />
               </div>
@@ -155,7 +155,7 @@ const ProgressiveForm: React.FC = () => {
                   name="lastName"
                   value={formData.personalInfo.lastName}
                   onChange={handleChange}
-                  className="w-full border py-2 px-5 border-darkgrey rounded-2xl"
+                  className="text-darkgrey w-full border py-2 px-5 border-darkgrey rounded-2xl"
                   placeholder="Enter Last Name"
                 />
               </div>
@@ -167,7 +167,7 @@ const ProgressiveForm: React.FC = () => {
                   name="email"
                   value={formData.personalInfo.email}
                   onChange={handleChange}
-                  className="w-full border py-2 px-5 border-darkgrey rounded-2xl"
+                  className="text-darkgrey w-full border py-2 px-5 border-darkgrey rounded-2xl"
                   placeholder="Enter Email"
                 />
               </div>
@@ -187,7 +187,7 @@ const ProgressiveForm: React.FC = () => {
                   name="departureDate"
                   value={formData.travelDetails.departureDate}
                   onChange={handleChange}
-                  className="w-full border py-2 px-5 border-darkgrey rounded-2xl"
+                  className="text-darkgrey w-full border py-2 px-5 border-darkgrey rounded-2xl"
                 />
               </div>
               <div className="flex flex-col gap-2">
@@ -198,7 +198,7 @@ const ProgressiveForm: React.FC = () => {
                   name="returnDate"
                   value={formData.travelDetails.returnDate}
                   onChange={handleChange}
-                  className="w-full border py-2 px-5 border-darkgrey rounded-2xl"
+                  className="text-darkgrey w-full border py-2 px-5 border-darkgrey rounded-2xl"
                 />
               </div>
               <div className="flex flex-col gap-2">
@@ -210,7 +210,7 @@ const ProgressiveForm: React.FC = () => {
                   min="1"
                   value={formData.travelDetails.numberOfTravelers}
                   onChange={handleChange}
-                  className="w-full border py-2 px-5 border-darkgrey rounded-2xl"
+                  className="text-darkgrey w-full border py-2 px-5 border-darkgrey rounded-2xl"
                 />
               </div>
             </div>
@@ -229,7 +229,7 @@ const ProgressiveForm: React.FC = () => {
                   name="hotel"
                   value={formData.accommodation.hotel}
                   onChange={handleChange}
-                  className="w-full border py-2 px-5 border-darkgrey rounded-2xl"
+                  className="text-darkgrey w-full border py-2 px-5 border-darkgrey rounded-2xl"
                   placeholder="Enter Hotel Preference"
                 />
               </div>
@@ -240,7 +240,7 @@ const ProgressiveForm: React.FC = () => {
                   name="roomType"
                   value={formData.accommodation.roomType}
                   onChange={handleChange}
-                  className="w-full border py-2 px-5 border-darkgrey rounded-2xl"
+                  className="text-darkgrey w-full border py-2 px-5 border-darkgrey rounded-2xl"
                 >
                   <option value="">Select a room type</option>
                   <option value="single">Single</option>
@@ -263,7 +263,7 @@ const ProgressiveForm: React.FC = () => {
                   name="specialRequests"
                   value={formData.additionalInfo.specialRequests}
                   onChange={handleChange}
-                  className="w-full border py-2 px-5 border-darkgrey rounded-2xl"
+                  className="text-darkgrey w-full border py-2 px-5 border-darkgrey rounded-2xl"
                   placeholder="Enter any special requests"
                 />
               </div>

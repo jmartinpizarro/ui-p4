@@ -303,7 +303,7 @@ const ProgressiveForm: React.FC = () => {
   return (
     <>
       <NavBar />
-      <div className="flex-grow">
+      <div className="my-60 flex-grow">
             {showSuccessMessage ? (
               <div className="flex flex-col items-center justify-center mt-10">
                 <Header text="Form Submitted Successfully!" color="red" />

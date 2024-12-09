@@ -31,17 +31,13 @@ const Intro: React.FC = () => {
     // Determinar los valores de catálogo y prueba basados en el estado
     let toyCatalogueLink
     let testOrListLink
-    if (userLogged === null){
+    if (userLogged === "null" || isKid === true){
         toyCatalogueLink = '/toycataloguekids';
         testOrListLink = '/test';
     }
-    else if (isKid === false){
+    else {
         toyCatalogueLink = '/toycatalogueadult';
         testOrListLink = '/listacompra';
-    }
-    else if (isKid === true){
-        toyCatalogueLink = '/toycataloguekids';
-        testOrListLink = '/test';
     }
 
     return (
@@ -57,12 +53,7 @@ const Intro: React.FC = () => {
                     <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                         <RedButton text="¡A la galería!" clicked={'/gallery'}></RedButton>
                         <RedButton text="Regístrate" clicked={registerPopUp}></RedButton>
-                        {userLogged !== "null" && isKid === false && (
-                            <>
-                                <RedButton text="Reserva tu viaje" clicked={'/trip'}></RedButton>
-                            </>
-                        )}
-                        {userLogged === "null" && (
+                        {(userLogged === "null" || isKid === true) && (
                             <>
                                 <RedButton text="Catálogo de Juguetes" clicked={`${toyCatalogueLink}`}></RedButton>
                                 <RedButton text="Test del Niño Bueno" clicked={'/test'}></RedButton>
@@ -72,13 +63,8 @@ const Intro: React.FC = () => {
                             <>
                                 <RedButton text="Catálogo de Juguetes" clicked={`${toyCatalogueLink}`}></RedButton>
                                 <RedButton text="Lista de la compra" clicked={`${testOrListLink}`}></RedButton>
+                                <RedButton text="Reserva tu viaje" clicked={'/trip'}></RedButton>
                             </>
-                        )}
-                        {userLogged !== "null" && isKid === true && (
-                            <>
-                            <RedButton text="Catálogo de Juguetes" clicked={`${toyCatalogueLink}`}></RedButton>
-                            <RedButton text="Test del niño bueno" clicked={'/test'}></RedButton>
-                        </>
                         )}
                     </div>
                 </div>

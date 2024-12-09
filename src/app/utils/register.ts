@@ -220,6 +220,7 @@ export function registerPopUp() {
         users.push(jsonToAdd);
         localStorage.setItem("users", JSON.stringify(users));
         popup.remove(); // close the popUp
+        window.location.reload()
     });
-    window.location.reload()
+    
 }

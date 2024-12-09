@@ -19,6 +19,13 @@ const Intro: React.FC = () => {
         // Establecer el estado basado en los valores obtenidos de localStorage
         setIsKid(storedIsKid === "child");
         setUserLogged(storedUserLogged);
+        const hasRefreshed = localStorage.getItem('hasRefreshed');
+        if (!hasRefreshed) {
+            // Establecer la bandera de actualización
+            localStorage.setItem('hasRefreshed', 'true');
+            // Forzar la actualización de la página
+            window.location.reload();
+        }
     }, []);
 
     // Determinar los valores de catálogo y prueba basados en el estado

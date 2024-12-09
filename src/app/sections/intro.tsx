@@ -5,8 +5,7 @@ import Image from "@/components/Image";
 import RedButton from "@/components/RedButton";
 import { registerPopUp } from "../utils/register";
 
-import React, { useContext } from 'react';
-import { serialize } from 'v8';
+import React from 'react';
 
 const Intro: React.FC = () => {
     const [isKid, setIsKid] = useState<boolean | null>(null); // Estado para verificar si es niño
@@ -23,8 +22,8 @@ const Intro: React.FC = () => {
     }, []);
 
     // Determinar los valores de catálogo y prueba basados en el estado
-    var toyCatalogueLink
-    var testOrListLink
+    let toyCatalogueLink
+    let testOrListLink
     if (userLogged === null){
         toyCatalogueLink = '/toycataloguekids';
         testOrListLink = '/test';
@@ -33,11 +32,6 @@ const Intro: React.FC = () => {
         toyCatalogueLink = '/toycatalogueadult';
         testOrListLink = '/listacompra';
     }
-
-    console.log("isKid is",isKid);
-    console.log("userLogged is",userLogged);
-    console.log("toyCatalogueLink is",toyCatalogueLink);
-    console.log("testOrListLink is",testOrListLink);
 
     return (
         <section className="px-4 py-10 flex flex-col items-center justify-center gap-10 min-h-[90vh]">
@@ -59,19 +53,19 @@ const Intro: React.FC = () => {
                         )}
                         {userLogged === "null" && (
                             <>
-                                <RedButton text="Catálogo de Juguetes" clicked={'/toycataloguekids'}></RedButton>
+                                <RedButton text="Catálogo de Juguetes" clicked={`${toyCatalogueLink}`}></RedButton>
                                 <RedButton text="Test del Niño Bueno" clicked={'/test'}></RedButton>
                             </>
                         )}
                         {userLogged !== "null" && isKid === false && (
                             <>
-                                <RedButton text="Catálogo de Juguetes" clicked={'/toycatalogueadult'}></RedButton>
-                                <RedButton text="Lista de la compra" clicked={'/listacompra'}></RedButton>
+                                <RedButton text="Catálogo de Juguetes" clicked={`${toyCatalogueLink}`}></RedButton>
+                                <RedButton text="Lista de la compra" clicked={`${testOrListLink}`}></RedButton>
                             </>
                         )}
                         {userLogged !== "null" && isKid === true && (
                             <>
-                            <RedButton text="Catálogo de Juguetes" clicked={'/toycataloguekids'}></RedButton>
+                            <RedButton text="Catálogo de Juguetes" clicked={`${toyCatalogueLink}`}></RedButton>
                             <RedButton text="Test del niño bueno" clicked={'/test'}></RedButton>
                         </>
                         )}

@@ -79,12 +79,12 @@ export default function GoodChildTest() {
                                 <RedButton
                                     text="Sí"
                                     clicked={() => handleAnswerChange(index, true)}
-                                    className={answers[index] === true ? "bg-green-500 text-white" : ""}
+                                    className={answers[index] === true ? "bg-green-500 text-white" : "bg-gray-300 text-black"}
                                 />
                                 <RedButton
                                     text="No"
                                     clicked={() => handleAnswerChange(index, false)}
-                                    className={answers[index] === false ? "bg-green-500 text-white" : ""}
+                                    className={answers[index] === false ? "bg-red-500 text-white" : "bg-gray-300 text-black"}
                                 />
                             </div>
                         </div>

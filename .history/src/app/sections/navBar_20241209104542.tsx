@@ -55,7 +55,7 @@ const NavBar: React.FC = () => {
 
                 {/* Autenticación para Desktop */}
                 <div className="autenticator flex flex-row gap-5">
-                    <RedButton text="Iniciar sesión" clicked={logInPopUp}></RedButton>
+                    <RedButton text="Iniciar sesión" clicked={logInPopUp}></WhiteButton>
                     <RedButton text="Registrarse" clicked={registerPopUp}></RedButton>
                 </div>
 

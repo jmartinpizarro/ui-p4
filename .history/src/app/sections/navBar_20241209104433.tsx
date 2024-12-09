@@ -55,7 +55,7 @@ const NavBar: React.FC = () => {
 
                 {/* Autenticación para Desktop */}
                 <div className="autenticator flex flex-row gap-5">
-                    <RedButton text="Iniciar sesión" clicked={logInPopUp}></RedButton>
+                    <WhiteButton text="Iniciar sesión" clicked={logInPopUp}></WhiteButton>
                     <RedButton text="Registrarse" clicked={registerPopUp}></RedButton>
                 </div>
 
@@ -93,14 +93,14 @@ const NavBar: React.FC = () => {
 
                     {/* Autenticación para Mobile */}
                     <div className="autenticator flex flex-row gap-5">
-                        <RedButton text="Iniciar sesión" clicked={logInPopUp}></RedButton>
+                        <R text="Iniciar sesión" clicked={logInPopUp}></WhiteButton>
                         <RedButton text="Registrarse" clicked={registerPopUp}></RedButton>
                     </div>
 
                     {/* Contenido para usuarios logueados (Mobile) */}
-                    {/*<div className="isLogin hidden">
+                    <div className="isLogin hidden">
                         <WhiteButton text="👤" clicked={() => setIsPopUpVisible(true)}></WhiteButton>
-                    </div>*/}
+                    </div>
                 </ul>
             </div>
 

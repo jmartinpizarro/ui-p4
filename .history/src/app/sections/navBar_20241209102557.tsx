@@ -1,7 +1,7 @@
+'use client'
 import Image from "../../components/Image"
 import RedButton from "@/components/RedButton"
 import WhiteButton from "@/components/WhiteButton"
-import PopUp from "@/components/Enrouter"
 import { registerPopUp } from "../utils/register"
 import { logInPopUp } from "../utils/logIn"
 import { HashLink } from 'react-router-hash-link';
@@ -9,6 +9,7 @@ import { useState } from "react"
 import Link from 'next/link'
 
 const NavBar: React.FC = () => {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isOpen, setIsOpen] = useState(false)
     const [isPopUpVisible, setIsPopUpVisible] = useState(false)
     const handleScroll = (id: string) => {
@@ -55,7 +56,7 @@ const NavBar: React.FC = () => {
 
                 {/* Autenticación para Desktop */}
                 <div className="autenticator flex flex-row gap-5">
-                    <RedButton text="Iniciar sesión" clicked={logInPopUp}></RedButton>
+                    <WhiteButton text="Iniciar sesión" clicked={logInPopUp}></WhiteButton>
                     <RedButton text="Registrarse" clicked={registerPopUp}></RedButton>
                 </div>
 
@@ -93,21 +94,18 @@ const NavBar: React.FC = () => {
 
                     {/* Autenticación para Mobile */}
                     <div className="autenticator flex flex-row gap-5">
-                        <RedButton text="Iniciar sesión" clicked={logInPopUp}></RedButton>
+                        <WhiteButton text="Iniciar sesión" clicked={logInPopUp}></WhiteButton>
                         <RedButton text="Registrarse" clicked={registerPopUp}></RedButton>
                     </div>
 
                     {/* Contenido para usuarios logueados (Mobile) */}
-                    {/*<div className="isLogin hidden">
+                    <div className="isLogin hidden">
                         <WhiteButton text="👤" clicked={() => setIsPopUpVisible(true)}></WhiteButton>
-                    </div>*/}
+                    </div>
                 </ul>
             </div>
 
-            <PopUp
-                isVisible={isPopUpVisible}
-                onClose={() => setIsPopUpVisible(false)}
-            />
+            
         </nav>
     )
 }

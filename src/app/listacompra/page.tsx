@@ -96,8 +96,7 @@ export default function ShoppingList() {
                 </div>
 
                 {/* Botón para continuar con el pago */}
-                <RedButton text="Proceder al Pago" clicked="/checkout" />
-                <RedButton text= "Volver al catálogo" clicked="/toycatalogue" />
+                <RedButton text= "Volver al catálogo" clicked="/toycatalogueadult" />
             </section>
 
             {/* Footer en la parte inferior */}

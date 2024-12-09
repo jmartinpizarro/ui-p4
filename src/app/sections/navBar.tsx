@@ -45,7 +45,7 @@ const NavBar: React.FC = () => {
                 <Link href="/#map" legacyBehavior>
                     <a className="text-background hover:underline" onClick={() => handleScroll('map')}>El mapa</a>
                 </Link>
-                <Link href="/#letters" legacyBehavior>
+                <Link href="/#sendLetters" legacyBehavior>
                     <a className="text-background hover:underline" onClick={() => handleScroll('sendLetters')}>¡Envía tu carta!</a>
                 </Link>
                 <Link href="/#activities" legacyBehavior>

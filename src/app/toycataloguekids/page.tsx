@@ -72,7 +72,7 @@ export default function ToyCatalogue() {
                                     width="200"
                                     height="200"
                                 />
-                                <p className="text-center mt-2 font-semibold">{toy.name}</p>
+                                <p className="text-darkgrey text-center mt-2 font-semibold">{toy.name}</p>
                             </div>
                         ))}
                     </div>

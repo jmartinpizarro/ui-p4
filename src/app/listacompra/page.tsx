@@ -59,7 +59,7 @@ export default function ShoppingList() {
             <section className="px-4 py-10 flex flex-col items-center justify-center gap-10 min-h-[90vh]">
                 <Header text="Lista de la Compra" color="green" />
 
-                <div className="w-full max-w-4xl">
+                <div className="text-darkgrey w-full max-w-4xl">
                     {/* Lista de artículos */}
                     <table className="w-full text-left border-collapse">
                         <thead>
@@ -78,7 +78,7 @@ export default function ShoppingList() {
                                     <td className="py-2 px-4">{item.quantity}</td>
                                     <td className="py-2 px-4">
                                         <button
-                                            className="text-red-500 hover:text-red-700"
+                                            className="text-red hover:text-palered"
                                             onClick={() => handleRemove(index)}
                                         >
                                             Eliminar

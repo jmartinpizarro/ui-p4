@@ -73,7 +73,7 @@ export default function GoodChildTest() {
                 <div className="w-full max-w-4xl flex flex-col gap-6 items-center justify-center">
                     {questions.map((question, index) => (
                         <div key={index} className="flex flex-col gap-2 text-center">
-                            <p className="text-lg font-semibold">{question}</p>
+                            <p className="text-darkgrey text-lg font-semibold">{question}</p>
                             <div className="flex gap-4 justify-center">
                                 <SelectableButton
                                     text="Sí"
@@ -91,14 +91,14 @@ export default function GoodChildTest() {
                 </div>
                 <div className="mt-6 flex justify-center">
                     <button
-                        className="px-6 py-3 bg-green-700 text-white font-semibold rounded hover:bg-green-600 transition-colors duration-200"
+                        className="px-6 py-3 bg-green text-white font-semibold rounded hover:bg-lightgreen transition-colors duration-200"
                         onClick={calculateResult}
                     >
                         Calcular Resultado
                     </button>
                 </div>
                 {result && (
-                    <div className="mt-6 text-center">
+                    <div className="text-darkgrey mt-6 text-center">
                         <p className="text-2xl font-bold">{result}</p>
                         {advice && <p className="mt-4 text-lg">{advice}</p>}
                     </div>

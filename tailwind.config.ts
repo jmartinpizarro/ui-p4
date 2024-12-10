@@ -17,7 +17,9 @@ export default {
         palered: "#E5383B",
         grey: "#D3D3D3",
         darkgrey: "#5B5B5B",
-        background: "#F5F3F4"
+        background: "#F5F3F4",
+        green: "#008000",
+        lightgreen: "#5ce65c"
       },
       fontFamily: {
         lora: ['Lora', 'serif']
@@ -32,4 +34,8 @@ export default {
     },
   },
   plugins: [],
+  safelist: [
+    'text-green',
+    'text-lightgreen',
+  ],
 } satisfies Config;

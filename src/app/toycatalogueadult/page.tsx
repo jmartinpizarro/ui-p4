@@ -86,8 +86,8 @@ export default function ToyCatalogue() {
                                     width="200"
                                     height="200"
                                 />
-                                <p className="text-center mt-2 font-semibold">{toy.name}</p>
-                                <p className="text-center text-gray-500">${toy.price.toFixed(2)}</p>
+                                <p className="text-darkgrey text-center mt-2 font-semibold">{toy.name}</p>
+                                <p className="text-darkgrey text-center text-gray-500">${toy.price.toFixed(2)}</p>
                                 <RedButton
                                     text="Añadir a la Lista"
                                     clicked={() => addToCart(toy)} // Pasa la función como clicked

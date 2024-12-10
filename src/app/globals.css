@@ -11,6 +11,8 @@
   --grey: #D3D3D3;
   --dark-grey: #5B5B5B;
   --pale-white: #F5F3F4;
+  --green: "#008000";
+  --light-green: "#5ce65c";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -97,22 +99,22 @@ body {
 /* Estilos responsivos */
 @media screen and (max-width: 768px) {
   .popUp-form {
-      padding: 1rem;
+    padding: 1rem;
   }
 
   .popUp-form h2 {
-      font-size: 1.25rem;
+    font-size: 1.25rem;
   }
 
   .popUp-form input,
   .popUp-form select {
-      padding: 0.5rem;
-      font-size: 0.9rem;
+    padding: 0.5rem;
+    font-size: 0.9rem;
   }
 
   .popUp-form button {
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 }
 

@@ -55,7 +55,6 @@ const Intro: React.FC = () => {
                         
                         {(userLogged === "null" || isKid === true) && (
                             <>
-                                <RedButton text="Regístrate" clicked={registerPopUp}></RedButton>
                                 <RedButton text="Catálogo de Juguetes" clicked={`${toyCatalogueLink}`}></RedButton>
                                 <RedButton text="Test del Niño Bueno" clicked={'/test'}></RedButton>
                             </>

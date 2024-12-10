@@ -52,10 +52,9 @@ const Intro: React.FC = () => {
 
                     <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                         <RedButton text="¡A la galería!" clicked={'/gallery'}></RedButton>
-                        
+                        <RedButton text="Regístrate" clicked={registerPopUp}></RedButton>
                         {(userLogged === "null" || isKid === true) && (
                             <>
-                                <RedButton text="Regístrate" clicked={registerPopUp}></RedButton>
                                 <RedButton text="Catálogo de Juguetes" clicked={`${toyCatalogueLink}`}></RedButton>
                                 <RedButton text="Test del Niño Bueno" clicked={'/test'}></RedButton>
                             </>

@@ -3,14 +3,13 @@
 import NavBar from "../sections/navBar";
 import Footer from "../sections/footer";
 import Header from "@/components/Header";
-import RedButton from "@/components/RedButton";
+import SelectableButton from "@/components/SelectableButton";
 import { useState, useEffect } from "react";
 
 export default function GoodChildTest() {
-
     useEffect(() => {
-        const user = localStorage.getItem("userLogged")
-        if (user !== "null"){
+        const user = localStorage.getItem("userLogged");
+        if (user !== "null") {
             const toRemove = document.querySelectorAll('.autenticator');
             const toDisplay = document.querySelectorAll('.isLogin');
             toRemove.forEach((element) => {
@@ -20,7 +19,6 @@ export default function GoodChildTest() {
                     console.error('Element is not an HTMLElement:', element);
                 }
             });
-            
             toDisplay.forEach((element) => {
                 if (element instanceof HTMLElement) {
                     element.style.display = 'flex';
@@ -29,7 +27,8 @@ export default function GoodChildTest() {
                 }
             });
         }
-    }, [])
+    }, []);
+
     const questions = [
         "¿Has ayudado a tus padres en casa?",
         "¿Has sido amable con tus amigos?",
@@ -76,22 +75,27 @@ export default function GoodChildTest() {
                         <div key={index} className="flex flex-col gap-2 text-center">
                             <p className="text-lg font-semibold">{question}</p>
                             <div className="flex gap-4 justify-center">
-                                <RedButton
+                                <SelectableButton
                                     text="Sí"
-                                    clicked={() => handleAnswerChange(index, true)}
-                                    className={answers[index] === true ? "bg-green-500 text-white" : "bg-gray-300 text-black"}
+                                    isSelected={answers[index] === true}
+                                    onClick={() => handleAnswerChange(index, true)}
                                 />
-                                <RedButton
+                                <SelectableButton
                                     text="No"
-                                    clicked={() => handleAnswerChange(index, false)}
-                                    className={answers[index] === false ? "bg-red-500 text-white" : "bg-gray-300 text-black"}
+                                    isSelected={answers[index] === false}
+                                    onClick={() => handleAnswerChange(index, false)}
                                 />
                             </div>
                         </div>
                     ))}
                 </div>
                 <div className="mt-6 flex justify-center">
-                    <RedButton text="Calcular Resultado" clicked={calculateResult} />
+                    <button
+                        className="px-6 py-3 bg-green-700 text-white font-semibold rounded hover:bg-green-600 transition-colors duration-200"
+                        onClick={calculateResult}
+                    >
+                        Calcular Resultado
+                    </button>
                 </div>
                 {result && (
                     <div className="mt-6 text-center">

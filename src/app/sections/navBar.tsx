@@ -20,7 +20,7 @@ const NavBar: React.FC = () => {
     };
 
     return (
-        <nav className="flex justify-between items-center h-24 w-full bg-palered px-10 relative z-50">
+        <nav className="flex justify-between items-center h-24 w-full bg-red px-10 relative z-50">
             {/* Logo */}
             <Image route="/logo.png" height={'72'} width={'72'} alternativeDesc="Santa Claus Logo"></Image>
 

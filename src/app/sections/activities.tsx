@@ -55,7 +55,7 @@ const Activities: React.FC = () => {
                         No pierdas esta oportunidad de hacerle todas tus preguntas y compartir tus deseos. <br />
                         Regístrate y asegúrate de reservar tu cita para este evento único. ¡Haz que este diciembre sea realmente mágico!
                     </p>
-                    <RedButton text="¡Quiero ver a Santa" clicked={'/videocall'}></RedButton>
+                    <RedButton text="¡Quiero ver a Santa!" clicked={'/videocall'}></RedButton>
 
                     {/*
                     <Link href="/videocall">

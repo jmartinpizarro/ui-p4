@@ -11,8 +11,8 @@
   --grey: #D3D3D3;
   --dark-grey: #5B5B5B;
   --pale-white: #F5F3F4;
-  --green: "#008000";
-  --light-green: "#5ce65c";
+  --green: #008000;
+  --light-green: #5ce65c;
 }
 
 @media (prefers-color-scheme: dark) {

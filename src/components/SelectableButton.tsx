@@ -11,8 +11,8 @@ const SelectableButton: React.FC<SelectableButtonProps> = ({ text, isSelected, o
         <button
             className={`px-4 py-2 rounded font-semibold transition-colors duration-200 ${
                 isSelected
-                    ? "bg-green-700 text-white" /* Oscuro con texto blanco */
-                    : "bg-gray-300 text-black hover:bg-gray-400"
+                    ? "bg-green text-white" /* Verde con texto blanco cuando está seleccionado */
+                    : "bg-gray-300 text-black hover:bg-gray-400" /* Gris por defecto */
             }`}
             onClick={onClick}
         >
@@ -20,6 +20,5 @@ const SelectableButton: React.FC<SelectableButtonProps> = ({ text, isSelected, o
         </button>
     );
 };
-
 
 export default SelectableButton;
